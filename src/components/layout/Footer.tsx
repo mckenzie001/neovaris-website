@@ -33,7 +33,7 @@ export default function Footer() {
               Intelligent infrastructure solutions for homes, businesses, and
               institutions across Ghana.
             </p>
-            <div className="flex gap-2">
+            {/* <div className="flex gap-2">
               {socialLinks.map((label) => (
                 <a
                   key={label}
@@ -43,7 +43,7 @@ export default function Footer() {
                   {label}
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           <FooterColumn title="Services" links={serviceLinks} />
