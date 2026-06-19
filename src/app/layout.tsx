@@ -1,20 +1,35 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Inter } from "next/font/google";
+import { QuoteModalProvider } from "@/lib/QuoteModalContext";
+import QuoteModal from "@/components/ui/QuoteModal";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSans = DM_Sans({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-dm-sans",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
   subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Neovaris Technologies",
-  description: "Neovaris Technologies official website",
+  title: {
+    default: "Neovaris Technologies",
+    template: "%s | Neovaris Technologies",
+  },
+  description:
+    "Technology solutions for modern businesses. Websites, software development, networking, security systems, infrastructure, and IT support.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -23,11 +38,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+     <html lang="en" className={`${dmSans.variable} ${inter.variable}`}>
+      <body className="font-body">
+        <QuoteModalProvider>
+          {children}
+          <QuoteModal />
+        </QuoteModalProvider>
       </body>
     </html>
   );

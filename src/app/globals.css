@@ -1,26 +1,157 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #020617;
+  --foreground: #ededed;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   GLOBAL SITE BACKGROUND
+========================================= */
+
+/* Ambient radial glows */
+.hero-bg {
+  background:
+    radial-gradient(
+      ellipse 90% 60% at 50% 0%,
+      rgba(59, 130, 246, 0.18) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 100%,
+      rgba(168, 85, 247, 0.16) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 50% 50% at 10% 70%,
+      rgba(48, 216, 138, 0.06) 0%,
+      transparent 60%
+    );
+}
+
+/* Global technology grid */
+.hero-grid {
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+}
+
+/* =========================================
+   CTA SECTION
+========================================= */
+
+.cta-glow::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(
+    ellipse,
+    rgba(91, 142, 255, 0.07) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* =========================================
+   PARTNER LOGOS
+========================================= */
+
+.partner-logo {
+  filter: brightness(0) invert(1);
+  opacity: 0.35;
+  transition: opacity 0.22s ease;
+}
+
+.partner-logo:hover {
+  opacity: 0.7;
+}
+
+/* =========================================
+   TEXT EFFECTS
+========================================= */
+
+.text-gradient-accent {
+  background: linear-gradient(
+    135deg,
+    #ffffff 30%,
+    rgba(91, 142, 255, 0.8) 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================
+   QUOTE FORM
+========================================= */
+
+.quote-input {
+  width: 100%;
+  background: #0c111f;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 11px 14px;
+  color: var(--foreground);
+  font-family: var(--font-inter);
+  font-size: 15px;
+  outline: none;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.quote-input:focus {
+  border-color: #5b8eff;
+  box-shadow: 0 0 0 3px rgba(91, 142, 255, 0.12);
+}
+
+.quote-input option {
+  background: #0c111f;
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
