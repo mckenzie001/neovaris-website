@@ -1,3 +1,5 @@
+import { Link } from "lucide-react";
+
 export default function MaintenanceLandingPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white relative overflow-hidden">
@@ -45,12 +47,12 @@ export default function MaintenanceLandingPage() {
               >
                 Contact Us
               </a>
-              <a target="_blank"
+              <Link target="_blank"
                 href="https://x.com/neovaris_tech?s=21"
                 className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
               >
                 Follow for updates
-              </a>
+              </Link>
             </div>
           </div>
         </div>
